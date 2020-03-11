@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,200,300,400,500,600,700,800,900&display=swap");
+
+@import "./index.scss";
+
+.LandingPage {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  box-sizing: border-box;
+  &--header {
+    width: 100%;
+    position: absolute;
+    padding: inherit;
+    z-index: -1;
+  }
+  &--navbar {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    .logo {
+      width: 200px;
+    }
+    .menuIcon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &--content {
+    padding: 10% 15%;
+    box-sizing: border-box;
+    .body {
+      width: 45%;
+      &__titleBlack {
+        font-size: 3.5em;
+        font-family: "Oswald", sans-serif;
+      }
+      &__titleBox {
+        height: 3.5em;
+        width: fit-content;
+        padding: 0px 1%;
+        background-color: #071fc8;
+        position: relative;
+
+        box-sizing: border-box;
+
+        .white {
+          margin: 0;
+          font-size: 3.5em;
+          font-family: "Oswald", sans-serif;
+          color: white;
+        }
+        img {
+          position: absolute;
+          left: 89%;
+          top: 60%;
+
+          width: 40%;
+          height: 40%;
+        }
+      }
+      &__text {
+        color: #6d7783;
+        width: 90%;
+        font-size: 0.9em;
+        font-weight: 300;
+        line-height: 24px;
+        font-family: "Poppins", sans-serif;
+        margin-top: 5%;
+        margin-bottom: 5%;
+
+        box-sizing: border-box;
+      }
+    }
+  }
+  &--projects {
+    margin-top: 8%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+    .title {
+      width: 45%;
+
+      font-family: "Roboto Slab", serif;
+      color: white;
+
+      text-align: center;
+      font-weight: 200;
+      line-height: 36px;
+      font-size: 1.1em;
+
+      box-sizing: border-box;
+    }
+    .separator {
+      border-bottom: 2px solid #ff794d;
+      width: 5%;
+      margin-top: 2%;
+      margin-bottom: 4%;
+
+      box-sizing: border-box;
+    }
+    .carousel {
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      box-sizing: border-box;
+      margin-bottom: 4%;
+      &--button {
+        display: flex;
+        align-items: center;
+        svg {
+          color: #ff794d;
+          width: 5vw;
+          cursor: pointer;
+          height: auto;
+        }
+      }
+      &--body {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        &__slide {
+          width: 48%;
+          display: flex;
+          flex-direction: column;
+          color: white;
+          align-items: center;
+          .SlideImage {
+            width: 100%;
+          }
+          .SlideTitle {
+            font-family: "Oswald", sans-serif;
+            font-size: 1.1em;
+            font-weight: 500;
+            white-space: nowrap;
+
+            margin-top: 5%;
+          }
+          .SlideDescription {
+            font-size: 0.9em;
+            font-family: "Poppins", sans-serif;
+            line-height: 16px;
+            font-weight: 300;
+            white-space: nowrap;
+
+            margin-top: 4%;
+          }
+        }
+      }
+    }
+  }
+  &--thoughts {
+    margin-top: 8%;
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+    .ThoughtsTitle {
+      width: 45%;
+
+      font-family: "Oswald", sans-serif;
+      color: #363d4f;
+
+      text-align: center;
+      font-weight: 500;
+      line-height: 51px;
+      font-size: 2.5em;
+
+      box-sizing: border-box;
+    }
+    .ThoughtsSeparator {
+      border-bottom: 2px solid #071fc8;
+      width: 8%;
+      margin-top: 2.5%;
+      margin-bottom: 4%;
+
+      box-sizing: border-box;
+    }
+    .ThoughtsCarousel {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      box-sizing: border-box;
+      margin-bottom: 4%;
+      &--button {
+        display: flex;
+        align-items: center;
+        svg {
+          color: #111111;
+          width: 3vw;
+          cursor: pointer;
+          height: auto;
+        }
+      }
+      &--body {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        &__slide {
+          width: 31%;
+          display: flex;
+          flex-direction: column;
+          color: #363d4f;
+          // align-items: center;
+          .SlideImage {
+            width: 25vw;
+            height: 60vh;
+          }
+          .SlideTitle {
+            font-family: "Oswald", sans-serif;
+            font-size: 1em;
+            font-weight: 500;
+            text-transform: uppercase;
+            box-sizing: border-box;
+            margin-top: 10%;
+            white-space: nowrap;
+          }
+          .SlideDescription {
+            font-size: 0.8em;
+            font-family: "Poppins", sans-serif;
+            line-height: 24px;
+            font-weight: 300;
+            color: #6d7783;
+            margin-top: 4%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Media queries for screens < 1080p
+@media only screen and (min-width: 1400px) {
+  .LandingPage--projects {
+    margin-top: 15%;
+  }
+  .LandingPage--thoughts {
+    margin-top: 12%;
+  }
+}
