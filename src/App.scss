@@ -1,15 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,200,300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap");
 
 @import "./index.scss";
 
 .LandingPage {
+  .generalPadding {
+    padding: 0% 8%;
+  }
   width: 100vw;
   display: flex;
   flex-direction: column;
-  padding: 2%;
+  // padding: 2%;
   box-sizing: border-box;
+  align-items: center;
   &--header {
     width: 100%;
     position: absolute;
@@ -17,11 +22,14 @@
     z-index: -1;
   }
   &--navbar {
-    width: 100%;
+    height: 8vh;
+    width: 90vw;
 
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     box-sizing: border-box;
     .logo {
       width: 200px;
@@ -32,7 +40,7 @@
     }
   }
   &--content {
-    padding: 10% 15%;
+    padding: 13% 15%;
     box-sizing: border-box;
     .body {
       width: 45%;
@@ -79,7 +87,7 @@
     }
   }
   &--projects {
-    margin-top: 8%;
+    // margin-top: 8%;
     width: 100%;
 
     display: flex;
@@ -160,6 +168,85 @@
       }
     }
   }
+  &--team {
+    margin-top: 8%;
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+    .TeamTitle {
+      width: 45%;
+
+      font-family: "Oswald", sans-serif;
+      color: #363d4f;
+
+      text-align: center;
+      font-weight: 500;
+      line-height: 51px;
+      font-size: 2.5em;
+
+      box-sizing: border-box;
+    }
+    .TeamSeparator {
+      border-bottom: 2px solid #071fc8;
+      width: 8%;
+      margin-top: 2.5%;
+      margin-bottom: 4%;
+
+      box-sizing: border-box;
+    }
+    .TeamCarousel {
+      width: fit-content;
+      box-sizing: border-box;
+      &--body {
+        display: flex;
+        justify-content: center;
+
+        width: 90vw;
+
+        overflow-x: hidden;
+        &__slide {
+          margin-right: 25px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: center;
+
+          color: #363d4f;
+          .SlideImage {
+            width: 22vw;
+            height: 50vh;
+          }
+          .SlideImageBig {
+            width: 28vw;
+            height: 68vh;
+          }
+          .SlideTitle {
+            font-family: "Oswald", sans-serif;
+            font-size: 1em;
+            font-weight: 500;
+            text-transform: uppercase;
+            box-sizing: border-box;
+            margin-top: 10px;
+            white-space: nowrap;
+          }
+          .SlideDescription {
+            font-size: 0.8em;
+            font-family: "Poppins", sans-serif;
+            line-height: 24px;
+            font-weight: 300;
+            color: #6d7783;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
   &--thoughts {
     margin-top: 8%;
     width: 100%;
@@ -192,35 +279,25 @@
       box-sizing: border-box;
     }
     .ThoughtsCarousel {
-      width: 90%;
+      width: 90vw;
       display: flex;
       justify-content: center;
       align-items: center;
 
       box-sizing: border-box;
       margin-bottom: 4%;
-      &--button {
-        display: flex;
-        align-items: center;
-        svg {
-          color: #111111;
-          width: 3vw;
-          cursor: pointer;
-          height: auto;
-        }
-      }
+
       &--body {
-        width: 90%;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         &__slide {
-          width: 31%;
+          width: 25vw;
           display: flex;
           flex-direction: column;
           color: #363d4f;
-          // align-items: center;
           .SlideImage {
-            width: 25vw;
+            width: 100%;
             height: 60vh;
           }
           .SlideTitle {
@@ -244,12 +321,160 @@
       }
     }
   }
+  &--letsTalk {
+    width: 100vw;
+    height: 100vh;
+    padding: 20%;
+
+    color: white;
+
+    background-color: #14218c;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    &__title {
+      font-family: "Oswald", sans-serif;
+      font-weight: 400;
+      font-size: 4em;
+      margin-bottom: 2%;
+    }
+    &__text {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      line-height: 24px;
+
+      text-align: center;
+
+      margin-bottom: 2%;
+    }
+  }
+  &--footer {
+    // box-sizing: border-box;
+    &__foot {
+      @extend .generalPadding;
+      height: 8vh;
+      width: 100vw;
+      background-color: #1f2026;
+
+      color: #656d7a;
+      font-weight: 400;
+      font-family: Roboto, sans-serif;
+      font-size: 0.8em;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      box-sizing: border-box;
+
+      .socialIcons {
+        display: flex;
+        justify-content: space-between;
+
+        width: 10%;
+        white-space: nowrap;
+        box-sizing: border-box;
+
+        svg {
+          // width: 50%;
+          // margin-right: 10%;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    &__partners {
+      height: 10vh;
+      width: 100vw;
+      background-color: #2c2e36;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 8vw;
+        height: auto;
+        margin-right: 10%;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    &__links {
+      height: 60vh;
+      @extend .generalPadding;
+      background-color: #25262d;
+
+      color: white;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-family: "Poppins", sans-serif;
+
+      .linksColumn {
+        height: 50%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &--title {
+          font-family: "Oswald", sans-serif;
+          font-weight: 500;
+          line-height: 16px;
+          letter-spacing: 0.1em;
+          margin: 0;
+          padding: 0;
+        }
+        &--body {
+          height: 70%;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          &__item {
+            .link {
+              padding-bottom: 2%;
+            }
+            .date {
+              color: #a1a8ae;
+            }
+          }
+          &__detail_item {
+            .title {
+              color: #a1a8ae;
+              padding-bottom: 2%;
+            }
+            .info {
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
-// Media queries for screens < 1080p
-@media only screen and (min-width: 1400px) {
+// @media only screen and (min-width: 1368px) {
+//   .LandingPage--projects {
+//     margin-top: 1%;
+//   }
+//   .LandingPage--thoughts {
+//     margin-top: 12%;
+//   }
+// }
+
+@media only screen and (min-width: 1680px) {
   .LandingPage--projects {
-    margin-top: 15%;
+    margin-top: 6%;
   }
   .LandingPage--thoughts {
     margin-top: 12%;
