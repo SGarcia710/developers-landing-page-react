@@ -12,7 +12,6 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  // padding: 2%;
   box-sizing: border-box;
   align-items: center;
   &--header {
@@ -37,6 +36,7 @@
     .menuIcon {
       width: 20px;
       height: 20px;
+      cursor: pointer;
     }
   }
   &--content {
@@ -144,6 +144,7 @@
           flex-direction: column;
           color: white;
           align-items: center;
+
           .SlideImage {
             width: 100%;
           }
@@ -169,6 +170,72 @@
     }
   }
   &--team {
+    .popup {
+      &-overlay {
+      }
+      &-content {
+        border-radius: 5px;
+        width: 55% !important;
+        height: fit-content;
+        padding: 2% !important;
+
+        display: flex !important;
+        align-items: center !important;
+
+        // box-sizing: border-box;
+        .modal {
+          margin: 0 !important;
+          display: flex;
+          width: fit-content !important;
+          &--image {
+            width: 30%;
+            // height: 100%;
+            margin-right: 2%;
+          }
+          &--info {
+            // margin-top: %;
+            font-family: "Poppins", sans-serif;
+            font-size: 1.1em;
+
+            &__name {
+              font-family: "Oswald", sans-serif;
+
+              font-size: 2em;
+              font-weight: bold;
+            }
+            &__position {
+              margin-top: 1%;
+              font-weight: 200;
+            }
+            &__academics {
+              margin-top: 6%;
+              .title {
+                font-family: "Oswald", sans-serif;
+
+                font-size: 1.2em;
+                font-weight: bold;
+              }
+              .academicItem {
+                margin-top: 2%;
+                font-weight: 300;
+              }
+            }
+          }
+          &--closeButton {
+            cursor: pointer;
+            svg {
+              position: absolute;
+              left: 96.5%;
+              top: 2%;
+            }
+          }
+        }
+      }
+    }
+    // use your custom style for ".popup-overlay"
+
+    // use your custom style for ".popup-content"
+
     margin-top: 8%;
     width: 100%;
     height: fit-content;
@@ -178,6 +245,7 @@
     align-items: center;
 
     box-sizing: border-box;
+    margin-bottom: 5%;
     .TeamTitle {
       width: 45%;
 
@@ -218,13 +286,15 @@
           align-items: center;
 
           color: #363d4f;
+
           .SlideImage {
             width: 22vw;
-            height: 50vh;
+            height: 52vh;
           }
           .SlideImageBig {
             width: 28vw;
-            height: 68vh;
+            height: 70vh;
+            cursor: pointer;
           }
           .SlideTitle {
             font-family: "Oswald", sans-serif;
@@ -444,6 +514,7 @@
           &__item {
             .link {
               padding-bottom: 2%;
+              cursor: pointer;
             }
             .date {
               color: #a1a8ae;

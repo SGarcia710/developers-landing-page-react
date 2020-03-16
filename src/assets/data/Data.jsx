@@ -15,7 +15,7 @@ import TeamMemberSix from "../img/CommunityManager.jpeg";
 
 import CesisLogo from "../img/Cesis.svg";
 import BehanceLogo from "../img/Behance.svg";
-import AdidasLogo from "../img/Adidas.svg";
+// import AdidasLogo from "../img/Adidas.svg";
 import NikeLogo from "../img/Nike.svg";
 
 export const Partners = [

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import * as Icon from "react-feather";
+import { v4 as uuidv4 } from "uuid";
+import Popup from "reactjs-popup";
 
 import "./App.scss";
 
@@ -11,7 +13,7 @@ import bg from "./assets/img/bg3.svg";
 
 import {
   ProjectsData,
-  ThoughtsData,
+  // ThoughtsData,
   TeamData,
   Partners
 } from "./assets/data/Data";
@@ -19,8 +21,67 @@ import {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      projects: ProjectsData,
+      team: TeamData,
+      modalOpen: false
+    };
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
+
+  changeSlide(direction, slide) {
+    let auxList = [];
+
+    const quantity =
+      slide === "projects"
+        ? this.state.projects.length
+        : this.state.team.length;
+
+    if (direction === "next") {
+      for (let i = 0; i < quantity; i++) {
+        if (i < quantity - 1) {
+          auxList.push(
+            slide === "projects"
+              ? this.state.projects[i + 1]
+              : this.state.team[i + 1]
+          );
+        } else {
+          auxList.push(
+            slide === "projects" ? this.state.projects[0] : this.state.team[0]
+          );
+        }
+      }
+    } else {
+      for (let i = 0; i < quantity; i++) {
+        if (i === 0) {
+          auxList.push(
+            slide === "projects"
+              ? this.state.projects[quantity - 1]
+              : this.state.team[quantity - 1]
+          );
+        } else {
+          auxList.push(
+            slide === "projects"
+              ? this.state.projects[i - 1]
+              : this.state.team[i - 1]
+          );
+        }
+      }
+    }
+    // Al final establezco el nuevo slider
+    this.setState({
+      [slide]: auxList
+    });
+  }
+
+  openModal() {
+    this.setState({ modalOpen: true });
+  }
+  closeModal() {
+    this.setState({ modalOpen: false });
+  }
+
   render() {
     return (
       <>
@@ -55,13 +116,15 @@ class App extends Component {
             <div className="separator" />
             <div className="carousel">
               <div className="carousel--button">
-                <Icon.ChevronLeft />
+                <Icon.ChevronLeft
+                  onClick={() => this.changeSlide("back", "projects")}
+                />
               </div>
               <div className="carousel--body">
-                {ProjectsData.map((project, i) => {
+                {this.state.projects.map((project, i) => {
                   if (i < 2) {
                     return (
-                      <div className="carousel--body__slide">
+                      <div key={uuidv4()} className="carousel--body__slide">
                         <img
                           src={project.image}
                           alt=""
@@ -78,25 +141,92 @@ class App extends Component {
                 })}
               </div>
               <div className="carousel--button">
-                <Icon.ChevronRight />
+                <Icon.ChevronRight
+                  onClick={() => this.changeSlide("next", "projects")}
+                />
               </div>
             </div>
             <div className="LandingPageButton">SEE ALL WORK</div>
           </div>
           <div className="LandingPage--team">
+            <Popup
+              open={this.state.modalOpen}
+              closeOnDocumentClick
+              onClose={this.closeModal}
+            >
+              <div className="modal">
+                <img
+                  className="modal--image"
+                  src={this.state.team[2].image}
+                  alt={this.state.team[2].name}
+                />
+                <div className="modal--info">
+                  <div className="modal--info__name">
+                    {this.state.team[2].name}
+                  </div>
+                  <div className="modal--info__position">
+                    {this.state.team[2].position}
+                  </div>
+                  <div className="modal--info__academics">
+                    <div className="title">Academic History</div>
+                    {this.state.team[2].academics.map(item => {
+                      return (
+                        <div className="academicItem">
+                          {`> ${item.title}, ${item.site}, ${item.year}.`}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div className="modal--closeButton" onClick={this.closeModal}>
+                  <Icon.X />
+                </div>
+              </div>
+            </Popup>
             <div className="TeamTitle">OUR TEAM</div>
             <div className="TeamSeparator" />
             <div className="TeamCarousel">
               <div className="TeamCarousel--body">
-                {TeamData.map((member, i) => {
+                {this.state.team.map((member, i) => {
                   if (i < 5) {
                     return (
-                      <div className="TeamCarousel--body__slide">
-                        <img
-                          src={member.image}
-                          alt=""
-                          className={i === 2 ? "SlideImageBig" : "SlideImage"}
-                        />
+                      <div key={uuidv4()} className="TeamCarousel--body__slide">
+                        {i === 1 && (
+                          <img
+                            src={member.image}
+                            alt=""
+                            onClick={() => this.changeSlide("back", "team")}
+                            className="SlideImage"
+                            style={{ cursor: "pointer" }}
+                          />
+                        )}
+
+                        {i === 2 && (
+                          <img
+                            className="SlideImageBig"
+                            onClick={this.openModal}
+                            src={member.image}
+                            alt=""
+                          />
+                        )}
+
+                        {i !== 1 && i !== 3 && i !== 2 && (
+                          <img
+                            src={member.image}
+                            alt=""
+                            className="SlideImage"
+                          />
+                        )}
+                        {i === 3 && (
+                          <img
+                            src={member.image}
+                            alt=""
+                            onClick={() => this.changeSlide("next", "team")}
+                            className="SlideImage"
+                            style={{ cursor: "pointer" }}
+                          />
+                        )}
+
                         <div className="SlideTitle">
                           {i === 2 ? member.name : <br />}
                         </div>
@@ -111,23 +241,26 @@ class App extends Component {
               </div>
             </div>
           </div>
-          <div className="LandingPage--thoughts">
+          {/* <div className="LandingPage--thoughts">
             <div className="ThoughtsTitle">OUR THOUGHTS</div>
             <div className="ThoughtsSeparator" />
             <div className="ThoughtsCarousel">
               <div className="ThoughtsCarousel--body">
-                {ThoughtsData.map((project, i) => {
+                {ThoughtsData.map((thought, i) => {
                   if (i < 3) {
                     return (
-                      <div className="ThoughtsCarousel--body__slide">
+                      <div
+                        key={uuidv4()}
+                        className="ThoughtsCarousel--body__slide"
+                      >
                         <img
-                          src={project.image}
+                          src={thought.image}
                           alt=""
                           className="SlideImage"
                         />
-                        <div className="SlideTitle">{project.title}</div>
+                        <div className="SlideTitle">{thought.title}</div>
                         <div className="SlideDescription">
-                          {project.description}
+                          {thought.description}
                         </div>
                       </div>
                     );
@@ -136,7 +269,7 @@ class App extends Component {
                 })}
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="LandingPage--letsTalk">
             <div className="LandingPage--letsTalk__title">
               LET’S TALK TOGETHER
@@ -155,6 +288,7 @@ class App extends Component {
               {Partners.map(partner => {
                 return (
                   <img
+                    key={uuidv4()}
                     className="partnerLogo"
                     src={partner.logo}
                     alt={partner.name}
@@ -253,7 +387,7 @@ class App extends Component {
             </div>
             <div className="LandingPage--footer__foot">
               <div className="signature">
-                © 2020 - Develop with
+                © 2020 - Develop with{" "}
                 <span role="img" aria-label="heart">
                   ♥️
                 </span>
